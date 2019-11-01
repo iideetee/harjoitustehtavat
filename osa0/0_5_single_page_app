@@ -1,0 +1,54 @@
+title Sekvenssikaavio Single App
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+palvelin-->selain: HTML-sivu
+
+note over selain:
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+  <script type="text/javascript" src="spa.js"></script>
+</head>
+<body>
+  <div class='container'>
+    <h1>Notes -- single page app</h1>
+    <div id='notes'>
+    </div>
+    <form id='notes_form'>
+      <input type="text" name="note"><br>
+      <input type="submit" value="Save">
+    </form>
+  </div>
+</body>
+</html>
+
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: Tyylitiedosto main.css
+
+note over selain:
+Tyylitiedosto jolla saadaan html-sivu fiksun näköseksi
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+palvelin-->selain: spa.js
+
+note over selain:
+Javscript-tiedosto missä on eventhandleri save-napin painallukselle. Nappia painettaessa 
+koodi käväsee lukemassa input-kentän syötteen ja lämmää sen Notes-tauluun joka sit näyttää 
+selaimessa uuden "syötteen" aikaleimoineen. 
+Tämän perään lähetetään samainen syöte myös palvelimelle (https://fullstack-exampleapp.herokuapp.com/new_note_spa)
+joten se menee sinne johkin kantaan talteen. Kun sivusto päivitetään niin alkutöikseen käydään kysäsemassä
+palvelimelta tallennetut viestit ja näytetään ne. Missään muussa välissä ei kysytä tietoa palvelimelta kuin sivun
+manuaalisessa refreshauksessa.
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: data.json
+
+note over selain:
+Palvelimelta saatu json jossa on viestit aikaleimoineen. Nämä DOM-apilla sit listataan selaimeen näkyviin. 
+["content":"Mörkö päästi sisään","date":"2019-11-01T10:43:42.558Z"}..
+end note
