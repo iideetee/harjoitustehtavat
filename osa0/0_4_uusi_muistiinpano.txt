@@ -1,0 +1,43 @@
+title Sekvenssikaavio
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+
+note over selain:
+Lähetetään lomakkeen tiedot palvelimelle.
+<form action="/new_note" method="POST">
+<input type="text" name="note"><br>
+<input type="submit" value="Save">
+</form>
+input kentän(note) tieto lähtee kun napppia "Save".
+end note
+
+palvelin-->selain: 302 Found
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+palvelin-->selain: HTML-koodi
+
+note over selain:
+Saadaan itse html-sivu.
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: main.css
+
+note over selain:
+Tyylitiedosto sivustolle, jotta saadaan se vielä fiksun näköiseksi.
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin-->selain: main.js
+
+note over selain:
+Selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: ["content":"Mörkö päästi sisään","date":"2019-11-01T10:43:42.558Z"}, ...]
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän (onreadystatechange)
+joka renderöi muistiinpanot näytölle
+end note
