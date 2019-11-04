@@ -55,7 +55,7 @@ const Total = (props) => {
   
     return (
       <div>
-        ...
+        jahuu
       </div>
     )
   }
