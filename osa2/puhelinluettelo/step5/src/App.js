@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 
 const Filter = (props) => {
   return (
@@ -13,25 +12,19 @@ const Button = (props) => (
 
 const App = () => {
 
-  const [persons, setPersons] = useState([])
-
-  useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
-      })
-  }, [])
-  console.log('render', persons.length, 'persons')
-
+  const [persons, setPersons] = useState([
+  { name: 'Harri Kullas', number: '12-34-5679999'},
+  { name: 'Alex ray', number: '39-44-5323523' },
+  { name: 'Dan Abramov', number: '12-43-234345' },
+  { name: 'Arto Hellas', number: '040-123456' },
+  { name: 'Ada Lovelace', number: '39-44-5323523' },
+  { name: 'Mary Poppendieck', number: '39-23-6423122' }])
   const [newName, setNewName ] = useState('') 
   const [newNumber, setNewNumber ] = useState('') 
   const [nameFilter, filterNames ] = useState('') 
 
   const Person = ({ person }) => {
-    console.log(person)
+   // console.log(person)
     let name = person.name.toLowerCase(person);
     let result = name.indexOf(nameFilter);
     if(result > -1)
@@ -91,22 +84,20 @@ const App = () => {
     filterNames (event.target.value)
   }
 
-  return (
+  return ( 
     <div>
       <h1>Phonebook</h1>
       <Filter value={nameFilter} onChange={handleFilterChange} text="filter shown with:"/>
-      <form onSubmit={addPerson}>
-      <h1>add a new</h1>
-      name:<input
-          value={newName}
-          onChange={handlePersonChange}
-        /><br />
-      number:<input
-          value={newNumber}
-          onChange={handleNumberChange}
-        /><br />
+      <div>
+        <form onSubmit={addPerson}>
+          <h1>add a new</h1>
+          name:<input value={newName} onChange={handlePersonChange}/>
+          <br />
+          number:<input value={newNumber} onChange={handleNumberChange} />
+          <br />
         <Button type="submit" label="add"/>
-      </form>    
+        </form>
+    </div>
       <h1>Numbers</h1> 
       {rows()}
     </div>
