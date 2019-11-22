@@ -1,0 +1,13 @@
+::1 - - [22/Nov/2019:18:02:42 +0000] "GET /api/persons/ HTTP/1.1" 200 206 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:03:04 +0000] "GET /api/ HTTP/1.1" 404 143 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:03:17 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:06:47 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:11:14 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::ffff:127.0.0.1 - - [22/Nov/2019:18:11:53 +0000] "POST /api/persons HTTP/1.1" 418 34 "-" "vscode-restclient"
+POST /api/persons 418 34 - 4.283 ms
+GET /api/persons/3 200 53 - 2.614 ms
+GET /api/persons/3 200 53 - 0.338 ms
+::1 - - [22/Nov/2019:18:31:34 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:31:37 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:31:45 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+::1 - - [22/Nov/2019:18:32:17 +0000] "GET /api/persons/3 HTTP/1.1" 200 53 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
