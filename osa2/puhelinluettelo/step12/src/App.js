@@ -117,6 +117,7 @@ const deletePerson = person => {
         { 
           const personObject = {
             id: item.id,
+            content: "content",
             name: item.name,
             number: newNumber
           }
@@ -152,6 +153,7 @@ const deletePerson = person => {
     if(found === false)
     {
       const personObject = {
+        content: "content",
         name: newName,
         number: newNumber
       }
