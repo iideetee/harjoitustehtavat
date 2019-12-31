@@ -62,7 +62,7 @@ let persons = [
     .catch(error => next(error))
   })
 
-  app.post('/api/persons', (request, response) => {
+  app.post('/api/persons', (request, response, next) => {
     const body = request.body
     console.log(body)
     if (!body.content) {
@@ -138,6 +138,11 @@ let persons = [
     if (error.name === 'CastError' && error.kind == 'ObjectId') {
       return response.status(400).send({ error: 'malformatted id' })
     } 
+
+    if (error.name === 'ValidationError' ) {
+       return response.status(400).send({ error: 'person name already found from the database' })
+    } 
+
   
     next(error)
   }
