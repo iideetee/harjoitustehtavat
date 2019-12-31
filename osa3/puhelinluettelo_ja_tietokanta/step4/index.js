@@ -53,7 +53,7 @@ let persons = [
   });
   })
 
-  app.delete('/api/persons/:id', (request, response) => {
+  app.delete('/api/persons/:id', (request, response, next) => {
     Person.findByIdAndRemove(request.params.id)
     .then(result => {
       response.status(204).end()
@@ -107,7 +107,7 @@ let persons = [
     return Math.random() * 1000
   }
 
-  app.get('/api/persons/:id', (request, response) => {
+  app.get('/api/persons/:id', (request, response, next) => {
 
     Person.findById(request.params.id)
     .then(person => {
@@ -124,6 +124,12 @@ let persons = [
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
+
+  const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'unknown endpoint' })
+  }
+  
+  app.use(unknownEndpoint)
 
   const errorHandler = (error, request, response, next) => {
     console.error(error.message)
