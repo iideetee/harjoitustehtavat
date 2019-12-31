@@ -38,12 +38,13 @@ let persons = [
     }
   ]
 
-
   app.get('/info', (request, response) => {
     const datenow = new Date()
-    let len = persons.length
 
-    response.send(`Phonebook has info for ${len} people<br /><br /> ${datenow}`)
+    Person.find({}).then(persons => {
+      console.log(persons.length)
+      response.send(`Phonebook has info for ${persons.length} people<br /><br /> ${datenow}`)
+    });
   })
 
   app.get('/api/persons', (request, response) => {
